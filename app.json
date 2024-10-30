@@ -3,6 +3,7 @@
     "name": "my-project",
     "slug": "my-project",
     "version": "1.0.0",
+      "scheme": "my-project",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -14,6 +15,7 @@
     "ios": {
       "supportsTablet": true
     },
+      
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -21,7 +23,10 @@
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
