@@ -24,7 +24,8 @@
       "package": "com.jsm.creator"
     },
     "web": {
-      "bundler": "metro"
+      "bundler": "metro",
+      "package": "com.jsm.creator"
     },
     "plugins": [
       "expo-router"

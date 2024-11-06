@@ -18,7 +18,7 @@ const SignUp = () => {
     password: "",
   });
 
-  console.log(form);
+  // console.log(form);
 
   const submit = async () => {
     if (form.username || form.email === "" || form.password === "") {

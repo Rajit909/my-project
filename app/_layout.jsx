@@ -60,6 +60,10 @@ const RootLayout = () => {
               headerShown: true,
             }}
           />
+          <Stack.Screen 
+            name="search/[query]"
+            options={{headerShown: true}}
+          />
         </Stack>
       </GlobalProvider>
     </>

@@ -31,7 +31,7 @@ const Home = () => {
     setRefreshing(false);
   };
 
-  console.log("Latest post", latestposts);
+  // console.log("Latest post", latestposts);
 
   return (
     <>
@@ -41,18 +41,16 @@ const Home = () => {
           data={posts}
           keyExtractor={(item) => item.$id}
           renderItem={({ item }) => (
-            <View>
               <VideoCard
                 title={item.title}
                 thumbnail={item.thumbnail}
-                creator={item.creator.username}
-                avatar={item.avatar}
                 video={item.video}
+                creator={item.creator.username}
+                avatar={item.creator.avatar}
                 isPlaying={playingVideoId === item.$id}
                 onPlay={() => setPlayingVideoId(item.$id)}
                 onStop={() => setPlayingVideoId(null)}
               />
-            </View>
           )}
           ListHeaderComponent={() => (
             <View className="my-6 px-4 space-x-6">
@@ -81,7 +79,7 @@ const Home = () => {
                   Latest Videos
                 </Text>
 
-                <Trending posts={latestposts} />
+                <Trending posts={latestposts ?? []} />
               </View>
             </View>
           )}

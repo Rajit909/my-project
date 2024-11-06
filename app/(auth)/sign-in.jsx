@@ -24,7 +24,7 @@ const SignIn = () => {
     password: "",
   });
 
-  console.log(form);
+  // console.log(form);
 
   const submit = async () => {
     if (form.email === "" || form.password === "") {
