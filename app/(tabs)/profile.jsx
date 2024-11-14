@@ -2,11 +2,11 @@ import { router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { View, Image, FlatList, TouchableOpacity } from "react-native";
 
-import { icons, images } from "../../constants";
+import {  images } from "../../constants";
 import useAppwrite from "../../lib/useAppwrite";
 import { getUserPosts, signOut } from "../../lib/appwrite";
 import { useGlobalContext } from "../../context/GlobalProvider";
-import { VideoCard } from "../components/VideoCard";
+import VideoCard  from "../components/VideoCard";
 import { InfoBox } from "../components/InfoBox";
 import { EmptyState } from "../components/EmptyState";
 import { Text } from "react-native-animatable";
@@ -16,7 +16,9 @@ const Profile = () => {
   const { user, setUser, setIsLogged } = useGlobalContext();
   const { data: posts } = useAppwrite(() => getUserPosts(user.$id));
 
-  console.log("Posts in profile", posts);
+  // console.log("Posts in profile", posts);
+
+  // console.log("User in profile", user);
 
   const logout = async () => {
     await signOut();
@@ -27,7 +29,7 @@ const Profile = () => {
 
   return (
     <SafeAreaView className="bg-primary h-full text-white">
-      {/* <FlatList
+      <FlatList
         data={posts}
         keyExtractor={(item) => item.$id}
         renderItem={({ item }) => (
@@ -38,8 +40,31 @@ const Profile = () => {
           />
         )}
 
+        ListHeaderComponent={
+          <View className="p-4">
+            <InfoBox title="Profile" />
+            <SearchInput />
+          </View>
+        }
+
+        ListEmptyComponent={
+          <EmptyState
+            title="No videos found"
+            description="You have not uploaded any videos yet."
+          />
+        }
+
+        ListFooterComponent={
+          <View className="p-4">
+            <TouchableOpacity onPress={logout}>
+              <Text className="text-center text-red-500">Logout</Text>
+            </TouchableOpacity>
+          </View>
+        }
         
-      /> */}
+      />
+
+   
       
     </SafeAreaView>
   );
